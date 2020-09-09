@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%% PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Change the font size of your document - 10pt, 12.1pt, etc.
+\documentclass[letterpaper,11pt,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{color}
+\definecolor{blue}{RGB}{32,71,150}
+\usepackage{charter} %Helvetica font
+\usepackage[none]{hyphenat} %Removes hyphenation
+\newcommand\tabitem{\makebox[1em][r]{-~~}} %Itemize in table
+\newcommand\tabspace{\makebox[1em][r]{~~~}} %Itemize indent for second line
+
+% Defined header
+\newcommand{\header}{\noindent \huge{\textbf{\textcolor{blue}{Nathan} Cheung}} \hfill \normalsize{\href{https://nathancheung.site}{nathancheung.site} | \href{mailto:nathancheung22@gmail.com}{nathancheung22@gmail.com}} \\
+\vspace{-2ex}
+\hline 
+\normalsize
+\vspace{1.25em}}
+
+%Change the margins to fit your CV/resume content
+\usepackage[left=.55in, right=.55in, bottom=.35in, top=.55in]{geometry}
+
+%Changes the page numbers - {arabic}=arabic numerals, {gobble}=no page numbers, {roman}=Roman numerals
+\pagenumbering{gobble}
+
+%%%%%%%%%%%%%%%%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+\header % Defined above
+
+%%%%%%%%%%%%%%%%% MAIN BODY %%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main body is contained in a tabular environment. To move sections onto the next page, simply end the tabular environment and begin a new tabular environment.
+
+\noindent \begin{tabular}{@{}p{1.15in} p{6.08in}@{}}
+ \textbf{SKILLS} 
+     & \tabitem Python, JavaScript, HTML, CSS, Java, C, SQL, Dart \\
+     & \tabitem Git, Node.js, React, Docker, AWS, Flask, MongoDB, JIRA, CI/CD Pipelines, Flutter \\
+     & \\
+
+ \textbf{EDUCATION}
+     & \textbf{Ryerson University} \\
+     & Bachelor of Engineering in Computer Engineering \hfill \textit{Exp. Apr 2022} \\
+     & Dean's List, 2018 - 2020 \hfill \textit{CGPA: 3.82} \\
+     & \\
+
+ \textbf{EXPERIENCE} 
+     & \textbf{Software Engineer Intern} \\
+     & \textit{IBM Canada \hfill May 2020 - Present} \\
+     & \tabitem Developed web interface for command-line tools using \textbf{React, Flask,} and \textbf{REST APIs} \\
+     & \tabitem Built a data scraping Slack Bot using \textbf{Python, Selenium Webdriver,} and Slack API \\
+     & \tabitem Created internal analytics tool using \textbf{nodeJS, express, JavaScript, Bootstrap} and other \tabspace \textbf{open source} tools to parse raw Excel data into front-end charts \\
+     & \tabitem Deployed all applications using \textbf{CI/CD Pipelines} and \textbf{Docker Containers} \\
+     & \\
+ 
+     & \textbf{Customer Experience Associate} \\
+     & \textit{TD Canada Trust \hfill Aug 2019 - Apr 2020} \\
+     & \tabitem Performed high-volume customer transactions that range up to \$3,000,000 \\ 
+     & \tabitem Held responsibilities for secure-desk and bank vault combinations for opening and closing \\
+     & \tabitem Completed security procedures for every transaction to prevent identity theft, money \tabspace laundering, and fraud \\
+     & \\
+     
+     & \textbf{University Mathematics Tutor} \\
+     & \textit{Self-Employed \hfill Sep 2018 - Apr 2020} \\
+     & \tabitem Increased GPA of two students by \textit{30\%} in university-level Engineering Economics \\
+     & \tabitem Obtained \textit{95\%} in Advanced Functions and Calculus for several 12th grade students \\
+     & \\
+     
+  \textbf{\href{https://github.com/nathancheung22}{PROJECTS}} 
+     & \textbf{\href{https://github.com/nathancheung22/vidshare}{Vidshare.ca - Node.js}} \\
+     & \tabitem Created a website to watch Youtube videos together \\
+     & \tabitem Synchronized user activity using \textbf{WebSockets, Youtube API,} and \textbf{express} as a back-end \\
+     & \tabitem Designed front-end UI with vanilla \textbf{HTML, CSS, JavaScript,} and \textbf{Bootstrap} \\
+     & \\
+     
+     & \textbf{\href{https://github.com/nathancheung22/classifieds-scraper}{Classifieds Scraper - Python}} \\
+     & \tabitem Developed script to identify high-margin listings and notify user via email \\
+     & \tabitem Utilized \textbf{Beautiful Soup} and \textbf{Pandas} to scrape listings and store data dynamically \\
+     & \tabitem Automated using an \textbf{AWS EC2} instance with \textbf{cron} jobs \\
+     & \\
+     
+     & \textbf{\href{https://determined-curie-4250bb.netlify.com/}{Stock Portfolio - Node.js}} \\
+     & \tabitem Developed an interactive website with authentication to track my personal stock portfolio \\
+     & \tabitem Handled periodic data retrieval with \textbf{MongoDB} \& \textbf{AWS Lambda} functions, and \tabspace authentication with \textbf{OAuth 2.0} \& \textbf{JSON Web Tokens} \\
+     & \\
+     
+     &\textbf{\href{https://github.com/nathancheung22/Sudoku-Solver}{Sudoku Solver - Python}} \\
+     & \tabitem Built a Sudoku Solver program with algorithmic visualization \\
+     & \tabitem Implemented backtracking algorithm to solve Sudoku puzzles with \textbf{pygame} as the UI \\
+     & \\
+
+ \textbf{ACHIEVEMENTS}
+     & \textbf{\href{https://www.ibm.com/blogs/jobs/2020/08/19/winning-projects-of-the-ibm-north-america-intern-hackathon/}{IBM Intern Hackathon}} \\
+     & \tabitem Achieved \textit{4th} place amongst 26 teams in the Racial Injustice \& Inequality section \\
+     & \tabitem Utilized \textbf{Natural Language Processing} to identify and remove information that can be \tabspace discriminated against with a \textit{91\%} success rate \\
+     & \tabitem Designed a \textbf{CRUD} app using \textbf{Firebase} to anonymize the job hiring process \\
+
+\end{tabular}
+\end{document}
