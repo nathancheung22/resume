@@ -4,24 +4,34 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{setspace}
+\usepackage{scrextend}
 \usepackage{hyperref}
 \usepackage{comment}
 \usepackage{color}
 \definecolor{blue}{RGB}{32,71,150}
 \usepackage{charter} %Helvetica font
 \usepackage[none]{hyphenat} %Removes hyphenation
-\newcommand\tabitem{\makebox[1em][r]{-~~}} %Itemize in table
-\newcommand\tabspace{\makebox[1em][r]{~~~}} %Itemize indent for second line
+\usepackage{enumitem} % removes itemization vspace
 
-% Defined header
-\newcommand{\header}{\noindent \huge{\textbf{\textcolor{blue}{Nathan} Cheung}} \hfill \normalsize{\href{https://nathancheung.site}{nathancheung.site} | \href{mailto:nathancheung22@gmail.com}{nathancheung22@gmail.com}} \\
-\vspace{-2ex}
-\hline 
-\normalsize
-\vspace{1.25em}}
+% Sets itemize style
+\renewcommand{\labelitemi}{\textendash}
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+% Creates Heading function
+\newcommand{\createHeading}[1]{
+    \vspace{1.25em}
+    \hline
+    \vspace{-1.5ex}
+    \begin{center}
+        #1
+    \end{center}
+    \vspace{-1.5ex}
+    \hline
+    \vspace{1.25em}
+}
 
 %Change the margins to fit your CV/resume content
-\usepackage[left=.55in, right=.55in, bottom=.35in, top=.55in]{geometry}
+\usepackage[left=.6in, right=.6in, bottom=.6in, top=.6in]{geometry}
 
 %Changes the page numbers - {arabic}=arabic numerals, {gobble}=no page numbers, {roman}=Roman numerals
 \pagenumbering{gobble}
@@ -32,75 +42,92 @@
 
 \begin{document}
 
-\header % Defined above
+%%%%%%%%%%%%%%%%% HEADER %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent \huge{\textbf{\textcolor{blue}{\href{https://www.urbandictionary.com/define.php?term=Nathan}{Nathan}} Cheung}} \hfill \normalsize{\href{https://nathancheung.site}{nathancheung.site} | \href{mailto:nathancheung22@gmail.com}{nathancheung22@gmail.com}}
+
+
 
 %%%%%%%%%%%%%%%%% MAIN BODY %%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The main body is contained in a tabular environment. To move sections onto the next page, simply end the tabular environment and begin a new tabular environment.
 
-\noindent \begin{tabular}{@{}p{1.15in} p{6.08in}@{}}
- \textbf{SKILLS} 
-     & Python, JavaScript, TypeScript, HTML, CSS, Java, C, SQL \\
-     & Git, Node.js, React, Agile, Docker, AWS, Flask, MongoDB, TravisCI, JIRA, CI/CD Pipelines \\
-     & \\
+% EDUCATION
+\createHeading{EDUCATION}
+\begin{addmargin}[.6em]{.6em}
+    \textbf{Ryerson University} \\
+    Bachelor of Engineering in Software Engineering \hfill Exp. Apr 2022 \\
+    Dean's List: 2018 - 2020 \hfill CGPA: \textbf{3.82}
+\end{addmargin}
 
- \textbf{EDUCATION}
-     & \textbf{Ryerson University} \\
-     & Bachelor of Engineering in Software Engineering \hfill \textit{Exp. Apr 2022} \\
-     & \href{https://www.ryerson.ca/content/dam/engineering-architectural-science/students/current-undergraduate/honours-recognition/pdfs/DeansList20182019September30.pdf}{Dean's List, 2018 - 2020} \hfill \textit{CGPA: 3.82} \\
-     & \\
+% PROJECTS
+\createHeading{PROJECTS}
+\begin{addmargin}[.6em]{.6em}
+    % Vidshare
+    \textbf{Youtube Video Synchronizer} \hfill \href{https://vidshare.ca/}{https://vidshare.ca/}
+    \begin{itemize}
+        \item Developed a full-stack web application to synchronize YouTube Playback in real time
+        \item Synchronized all user activity using \textbf{Socket.io websockets} and \textbf{Express.js} with back-end API endpoints
+        \item Designed front-end UI using \textbf{HTML, CSS, JavaScript,} and \textbf{Bootstrap}
+    \end{itemize}
+    \vspace{1.25em}
+    % Hand written digits
+    \textbf{Handwritten Digits Classifier} \hfill \href{https://handwritten-digits-ai.netlify.app/}{http://tiny.cc/izm5tz}
+    \begin{itemize}
+        \item Created and trained a \textbf{neural network} in \textbf{Keras} to classify handwritten digits
+        \item Designed a full-stack web application to visualize neuron layer with \textbf{Node.js, React,} and \textbf{Express.js} 
+    \end{itemize}
+    \vspace{1.25em}
+    % Kijiji scraper
+    \textbf{Automated Classifieds Bot} \hfill \href{https://git.io/JkKfz}{https://git.io/JkKfz}
+    \begin{itemize}
+        \item Created a \textbf{Python} bot to identify high-margin listings and notify user via email
+        \item Utilized \textbf{web scraping} with \textbf{Beautiful Soup} and \textbf{Pandas} to scrape listings and store data dynamically
+        \item Automated and deployed bot using an \textbf{AWS EC2} instance and email notifications with the \textbf{smtp} library
+    \end{itemize}
+    \vspace{1.25em}
+    % Password Manager
+    \textbf{Password Manager} \hfill \href{https://git.io/JkKk6}{https://git.io/JkKk6}
+    \begin{itemize}
+        \item Created a \textbf{Python} application to store and retrieve passwords securely
+        \item Ensured security using \textbf{bcrypt}'s Blowfish hashing algorithm with a randomly generated salt
+        \item Encrypted passwords with \textbf{AES-128-CBC encryption} and \textbf{PBKDF2's HMAC-SHA-256} key hashing
+    \end{itemize}
+    \vspace{1.25em}
+    % Sudoku Solver
+    \textbf{Sudoku Solver} \hfill \href{https://git.io/JkKJO}{https://git.io/JkKJO}
+    \begin{itemize}
+        \item Created a user-friendly application that solve Sudoku puzzles
+        \item Implemented a \textbf{backtracking} algorithm with visualization using \textbf{pygame}
+    \end{itemize}
+\end{addmargin}
 
- \textbf{EXPERIENCE} 
-     & \textbf{Software Engineer Intern} \\
-     & \textit{IBM Canada \hfill May 2020 - Present} \\
-     & \tabitem Developed a full-stack web application using \textbf{React/Redux,} and \textbf{Express.js} \\
-     & \tabitem Constructed end-to-end workflow testing to improve error catching by 70\% \\
-     & \tabitem Built a data scraping Slack Bot using \textbf{Python, Selenium Webdriver,} and Slack API \\
-     & \tabitem Automated an internal data analytics process using \textbf{Node.js} and \textbf{Chart.js} \\
-     & \tabitem Outlined design documentation for long term maintenance and support \\
-     & \tabitem Deployed all applications in \textbf{Docker} using automated \textbf{CI/CD Pipelines} with \textbf{Travis CI} \\
-     & \\
- 
-     & \textbf{Customer Experience Associate} \\
-     & \textit{TD Canada Trust \hfill Aug 2019 - Apr 2020} \\
-     & \tabitem Performed high-volume customer transactions that range up to \$3,000,000 \\ 
-     & \tabitem Granted responsibility to secure-desk and bank vault combinations for opening and closing \\
-     & \tabitem Completed security procedures for all bank transactions to prevent identity theft, money \tabspace laundering, and fraud \\
-     & \\
-     
-     & \textbf{University Mathematics Tutor} \\
-     & \textit{Self-Employed \hfill Sep 2018 - Apr 2020} \\
-     & \tabitem Increased GPA of two university students by \textit{30\%} in Engineering Economics \\
-     & \tabitem Obtained \textit{95\%} in Advanced Functions and Calculus for four 12\textsuperscript{th} grade students \\
-     & \\
-     
-  \textbf{\href{https://github.com/nathancheung22}{PROJECTS}} 
-     & \textbf{\href{https://github.com/nathancheung22/vidshare}{Vidshare.ca - Node.js}} \\
-     & \tabitem Created a website to watch Youtube videos together \\
-     & \tabitem Synchronized user activity using \textbf{WebSockets, Youtube API,} and \textbf{Express.js} as a back-end \\
-     & \tabitem Designed front-end UI with vanilla \textbf{HTML, CSS, JavaScript,} and \textbf{Bootstrap} \\
-     & \\
-     
-     & \textbf{\href{https://github.com/nathancheung22/classifieds-scraper}{Classifieds Scraper - Python}} \\
-     & \tabitem Developed a python script to identify high-margin listings and notify user via email \\
-     & \tabitem Utilized \textbf{Beautiful Soup} and \textbf{Pandas} to scrape listings and store data dynamically \\
-     & \tabitem Automated using an \textbf{AWS EC2} instance with \textbf{cron} jobs \\
-     & \\
-     
-     & \textbf{\href{https://determined-curie-4250bb.netlify.com/}{Stock Portfolio - Node.js}} \\
-     & \tabitem Developed an interactive website with authentication to track my personal stock portfolio \\
-     & \tabitem Handled periodic data retrieval using \textbf{MongoDB} \& \textbf{AWS Lambda} functions, and account \tabspace authentication using \textbf{OAuth 2.0} \& \textbf{JSON Web Tokens} \\
-     & \\
-     
-     &\textbf{\href{https://github.com/nathancheung22/Sudoku-Solver}{Sudoku Solver - Python}} \\
-     & \tabitem Built a Sudoku Solver program with algorithmic visualization \\
-     & \tabitem Implemented backtracking algorithm to solve Sudoku puzzles with \textbf{pygame} as the UI \\
-     & \\
+% EXPERIENCE
+\createHeading{EXPERIENCE}
+\begin{addmargin}[.6em]{.6em}
+    % IBM
+    \textbf{Software Engineer Intern} \\
+    \textit{IBM Canada} \hfill \textit{May 2020 - Present}
+    \begin{itemize}
+        \item Developed a full-stack web application using \textbf{TypeScript, React/Redux,} and \textbf{Express.js}
+        \item Constructed an end-to-end workflow testing suite to improve error catching by 70\%
+        \item Built a data scraping Slack Bot using \textbf{Python, Selenium,} and \textbf{Slack API}
+        \item Automated an internal data analytics process using \textbf{Node.js} and \textbf{Chart.js} for visualization
+        % \item Outlined design documentation for long term maintenance and support
+        \item Deployed all applications in \textbf{Docker Containers} using \textbf{CI/CD pipelines} with \textbf{Travis CI}
+    \end{itemize}
+    \vspace{1.25em}
+    % TD
+    \textbf{Customer Experience Associate} \\
+    \textit{TD Canada Trust} \hfill \textit{Aug 2019 - Apr 2020}
+    \begin{itemize}
+        \item Granted the additional responsibility to handle secure-desk and bank vault combinations
+        \item Complied with branch control procedures to prevent identity theft, money laundering, and fraud
+    \end{itemize}
+\end{addmargin}
 
- \textbf{ACHIEVEMENTS}
-     & \textbf{\href{https://www.ibm.com/blogs/jobs/2020/08/19/winning-projects-of-the-ibm-north-america-intern-hackathon/}{IBM Intern Hackathon} - 4\textsuperscript{th} place} \\
-     & \tabitem Designed a \textbf{CRUD} app using \textbf{Firebase} that removes bias in the job hiring process \\
-     & \tabitem Utilized \textbf{Natural Language Processing} to identify and remove discriminable information \tabspace with a \textit{91\%} success rate \\
-     
-
-\end{tabular}
+% TECHNICAL SKILLS
+\createHeading{TECHNICAL SKILLS}
+\begin{addmargin}[.6em]{.6em}
+    \textbf{Languages: } Python, JavaScript, Java, HTML, CSS, C, SQL \\
+    \textbf{Tools/Technologies: } Git, Node.js, TypeScript, Docker, AWS, Express.js, Travis CI, JIRA, MongoDB, Keras
+\end{addmargin}
 \end{document}
