@@ -14,8 +14,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a job called "convertPdfToPng"
+  convert-pdf-to-png:
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
 
@@ -37,8 +37,31 @@ jobs:
       - name: Push PNG to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.name "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add Nathan_Cheung_Resume_Image.png
           git commit -m "Converted PDF to PNG file"
           git push
+
+  # Push updated PDF file to my personal website
+  copy-pdf-to-website:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Checkout
+      - uses: actions/checkout@v2
+
+      # Push updated PDF file to my personal website
+      - name: Pushes updated PDF file
+        uses: /nathancheung22/my-website@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: "Nathan_Cheung_Resume_No_Phone.pdf"
+          destination_repo: "nathancheung22/my-website"
+          destination_folder: "assets"
+          user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          user_name: "github-actions[bot]"
+          commit_message: "Updated resume"
