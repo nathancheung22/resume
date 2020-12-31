@@ -29,8 +29,7 @@ jobs:
       - name: Convert PDF to PNG
         run: |
           sudo apt-get install poppler-utils
-          pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -png
-          ls
+          pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -png -singlefile -hide-annotations
       
       # Pushes PNG file to Github repo to be displayed in README.md
       - name: Push PNG to GitHub
@@ -38,7 +37,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.name "41898282+github-actions[bot]@users.noreply.github.com"
           
-          git add Nathan_Cheung_Resume_Image-1.png
+          git add Nathan_Cheung_Resume_Image.png
           git commit -m "Converted PDF to PNG file"
           git push
           
