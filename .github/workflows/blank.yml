@@ -35,5 +35,5 @@ jobs:
       
       - name: Convert PDF to IMG
         run: |
-          apt-get install poppler-utils
+          sudo apt-get install poppler-utils
           pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -png
