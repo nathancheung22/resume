@@ -2,11 +2,11 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -28,17 +28,16 @@ jobs:
       # Converts pushed PDF file to a PNG file
       - name: Convert PDF to PNG
         run: |
+          sudo apt-get update -y
           sudo apt-get install poppler-utils
-          pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -png
-      
+          pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -png -singlefile -hide-annotations
+
       # Pushes PNG file to Github repo to be displayed in README.md
       - name: Push PNG to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.name "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          git add Nathan_Cheung_Resume_Image-01.png
+
+          git add Nathan_Cheung_Resume_Image.png
           git commit -m "Converted PDF to PNG file"
           git push
-          
-          
