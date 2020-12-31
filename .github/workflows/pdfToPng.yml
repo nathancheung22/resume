@@ -4,9 +4,10 @@ name: CI
 
 # Controls when the action will run.
 on:
-  # Triggers the workflow on push request events but only for the master branch
+  # Triggers the workflow on push request events but only when PDF file has changed
   push:
-    branches: [master]
+    paths:
+      - "Nathan_Cheung_Resume_No_Phone.pdf"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
