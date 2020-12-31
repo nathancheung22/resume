@@ -28,6 +28,7 @@ jobs:
       # Converts pushed PDF file to a PNG file
       - name: Convert PDF to PNG
         run: |
+          sudo apt-get update
           sudo apt-get install poppler-utils
           pdftoppm -v
           pdftoppm --help
