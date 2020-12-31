@@ -30,7 +30,7 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install poppler-utils
-          pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -png -singlefile -hide-annotations
+          pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -png -singlefile -hide-annotations -rx 300 -ry 300
 
       # Pushes PNG file to Github repo to be displayed in README.md
       - name: Push PNG to GitHub
