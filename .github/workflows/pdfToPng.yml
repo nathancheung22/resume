@@ -28,9 +28,8 @@ jobs:
       # Converts pushed PDF file to a PNG file
       - name: Convert PDF to PNG
         run: |
-          sudo apt-get update -y
-          sudo apt-get install poppler-utils
-          sudo apt-cache policy poppler-utils
+          sudo apt update -y
+          sudo apt install poppler-utils
           pdftoppm -v
           pdftoppm --help
           pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -png -singlefile -hide-annotations
