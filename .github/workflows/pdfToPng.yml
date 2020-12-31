@@ -29,7 +29,7 @@ jobs:
       - name: Convert PDF to PNG
         run: |
           sudo apt-get install poppler-utils
-          pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -png -singlefile
+          pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -png -singlefile -hide-annotations
       
       # Pushes PNG file to Github repo to be displayed in README.md
       - name: Push PNG to GitHub
