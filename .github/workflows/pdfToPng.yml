@@ -56,17 +56,23 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Pushes updated PDF file to website
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           repository: nathancheung22/my-website
+          ref: refs/heads/master
           token: ${{ secrets.GitHub_PAT }}
-          path: master
-          source_file: "Nathan_Cheung_Resume_No_Phone.pdf"
-          destination_folder: "assets"
-          user_email: "41898282+github-actions[bot]@users.noreply.github.com"
-          user_name: "github-actions[bot]"
-          commit_message: "Updated resume"
+          path: ./assets
+        - uses: ./assets
+
+      # Push updated PDF file to my personal website
+      - name: Pushes updated PDF file
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add Nathan_Cheung_Resume_No_Phone.pdf
+          git commit -m "Updated resume"
+          git push
 
       # - name: Checkout
       #   uses: actions/checkout@v2
