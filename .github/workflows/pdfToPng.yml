@@ -20,8 +20,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a job called "convertPdfToPng"
-  convert-pdf-to-png:
+  # This workflow contains a job called "convert-pdf-to-jpeg"
+  convert-pdf-to-jpeg:
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
 
@@ -32,21 +32,21 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Converts pushed PDF file to a PNG file
-      - name: Convert PDF to PNG
+      # Converts pushed PDF file to a JPEG file
+      - name: Convert PDF to JPEG
         run: |
           sudo apt-get update -y
           sudo apt-get install poppler-utils
           pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -jpeg -jpegopt quality=100 -singlefile -hide-annotations -r 300
 
-      # Pushes PNG file to Github repo to be displayed in README.md
-      - name: Push PNG to GitHub
+      # Pushes JPEG file to Github repo to be displayed in README.md
+      - name: Push JPEG to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add Nathan_Cheung_Resume_Image.png
-          git commit -m "Converted PDF to PNG file"
+          git add Nathan_Cheung_Resume_Image.jpg
+          git commit -m "Converted PDF to JPEG file"
           git push
 
   # Push updated PDF file to my personal website
