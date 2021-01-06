@@ -37,7 +37,7 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install poppler-utils
-          pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -jpeg -jpegopt quality=100 -singlefile -hide-annotations -r 300
+          pdftoppm Nathan_Cheung_Resume_No_Phone.pdf Nathan_Cheung_Resume_Image -jpeg -jpegopt quality=100 -singlefile -hide-annotations -r 100
 
       # Pushes JPEG file to Github repo to be displayed in README.md
       - name: Push JPEG to GitHub
@@ -56,18 +56,30 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Checkout
+      - name: Pushes updated PDF file to website
         uses: actions/checkout@v2
-
-      # Push updated PDF file to my personal website
-      - name: Pushes updated PDF file
-        uses: /nathancheung22/my-website@master
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
+          repository: nathancheung22/my-website
+          token: ${{ secrets.GitHub_PAT }}
+          path: master
           source_file: "Nathan_Cheung_Resume_No_Phone.pdf"
-          destination_repo: "nathancheung22/my-website"
           destination_folder: "assets"
           user_email: "41898282+github-actions[bot]@users.noreply.github.com"
           user_name: "github-actions[bot]"
           commit_message: "Updated resume"
+
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+
+      # # Push updated PDF file to my personal website
+      # - name: Pushes updated PDF file
+      #   uses: nathancheung22/my-website@master
+      #   env:
+      #     API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      #   with:
+      #     source_file: "Nathan_Cheung_Resume_No_Phone.pdf"
+      #     destination_repo: "nathancheung22/my-website"
+      #     destination_folder: "assets"
+      #     user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+      #     user_name: "github-actions[bot]"
+      #     commit_message: "Updated resume"
