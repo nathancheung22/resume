@@ -6,14 +6,11 @@ name: CI
 on:
   # Triggers the workflow on push/pull request events but only when PDF file has changed
   push:
-    branches: [master, workflow-website]
-
-  # push:
-  #   paths:
-  #     - "Nathan_Cheung_Resume_No_Phone.pdf"
-  # pull_requests:
-  #   paths:
-  #     - "Nathan_Cheung_Resume_No_Phone.pdf"
+    paths:
+      - "Nathan_Cheung_Resume_No_Phone.pdf"
+  pull_request:
+    paths:
+      - "Nathan_Cheung_Resume_No_Phone.pdf"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -49,43 +46,3 @@ jobs:
           git commit -m "Converted PDF to JPEG file"
           git push
 
-  # Push updated PDF file to my personal website
-  copy-pdf-to-website:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-20.04
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          repository: nathancheung22/my-website
-          ref: refs/heads/master
-          token: ${{ secrets.GitHub_PAT }}
-          path: ./assets
-        - uses: ./assets
-
-      # Push updated PDF file to my personal website
-      - name: Pushes updated PDF file
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add Nathan_Cheung_Resume_No_Phone.pdf
-          git commit -m "Updated resume"
-          git push
-
-      # - name: Checkout
-      #   uses: actions/checkout@v2
-
-      # # Push updated PDF file to my personal website
-      # - name: Pushes updated PDF file
-      #   uses: nathancheung22/my-website@master
-      #   env:
-      #     API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      #   with:
-      #     source_file: "Nathan_Cheung_Resume_No_Phone.pdf"
-      #     destination_repo: "nathancheung22/my-website"
-      #     destination_folder: "assets"
-      #     user_email: "41898282+github-actions[bot]@users.noreply.github.com"
-      #     user_name: "github-actions[bot]"
-      #     commit_message: "Updated resume"
