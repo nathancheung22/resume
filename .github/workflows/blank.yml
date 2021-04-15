@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push/pull request events but only when PDF file has changed
+  push:
+    paths:
+      - "Nathan_Cheung_Resume_No_Phone.pdf"
+  pull_request:
+    paths:
+      - "Nathan_Cheung_Resume_No_Phone.pdf"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  push-file-to-website:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes test file
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'Nathan_Cheung_Resume_No_Phone.pdf'
+        destination_repo: 'nathancheung22/my-website'
+        destination_folder: 'assets'
+        user_email: 'nathancheung22@gmail.com'
+        user_name: 'Nathan Cheung'
+        commit_message: 'Updated Resume'
